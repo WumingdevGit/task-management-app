@@ -50,6 +50,7 @@ body {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 480px;
+  box-sizing: border-box;
   border: 1px solid var(--border-light);
   transition: background-color 0.3s ease;
 }
@@ -138,28 +139,44 @@ h1 {
   display: flex;
   gap: 10px;
   margin-bottom: 24px;
+  /* This is the magic line for mobile */
+  flex-wrap: wrap; 
 }
 
-.task-form input, .category-select {
+.task-form input {
+  /* This ensures the input takes full width if the button drops down */
+  flex: 1;
+  min-width: 200px; 
   padding: 12px;
   border: 1px solid var(--border-light);
   border-radius: 12px;
   background: var(--bg-color);
   color: var(--text-main);
-  outline: none;
 }
 
-.task-form input { flex: 1; }
+.category-select {
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--bg-color);
+  color: var(--text-main);
+}
 
 .add-btn {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 0 20px;
+  padding: 12px 20px;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
+  /* Makes the button stretch to full width on mobile */
+  flex: 1; 
+  min-width: 80px;
 }
+
+
+
 
 .filter-bar {
   display: flex;
